@@ -1,0 +1,151 @@
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "market-regime-intelligence"
+version = "0.1.0"
+description = "A production-grade quantitative research platform for market regime characterization and pre-market GO/NO-GO prediction."
+readme = "README.md"
+requires-python = ">=3.13"
+license = { text = "MIT" }
+
+authors = [
+    { name = "Anirudh SB" }
+]
+
+keywords = [
+    "machine-learning",
+    "quantitative-finance",
+    "market-regime",
+    "algorithmic-trading",
+    "feature-engineering",
+    "research-platform",
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "numpy>=2.3.0",
+    "pandas>=2.3.0",
+    "pydantic>=2.11.0",
+    "pydantic-settings>=2.10.0",
+    "pyyaml>=6.0.2",
+    "structlog>=25.4.0",
+    "typer>=0.16.0",
+    "rich>=14.1.0",
+]
+
+[dependency-groups]
+
+dev = [
+    "pytest>=8.4.0",
+    "pytest-cov>=6.2.0",
+    "ruff>=0.12.0",
+    "mypy>=1.17.0",
+    "pre-commit>=4.2.0",
+]
+
+ml = [
+    "scikit-learn>=1.7.0",
+    "xgboost>=3.0.0",
+    "lightgbm>=4.6.0",
+]
+
+viz = [
+    "plotly>=6.2.0",
+    "matplotlib>=3.10.0",
+]
+
+docs = [
+    "mkdocs",
+    "mkdocs-material",
+]
+
+notebooks = [
+    "jupyterlab",
+    "ipykernel",
+]
+
+api = [
+    "fastapi",
+    "uvicorn",
+]
+
+[project.scripts]
+mri = "market_regime_intelligence.cli.main:app"
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/market_regime_intelligence"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+src = ["src"]
+
+exclude = [
+    ".git",
+    ".idea",
+    ".venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".mypy_cache",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "UP",
+    "B",
+    "SIM",
+    "C4",
+]
+
+ignore = []
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+warn_unused_configs = true
+warn_return_any = true
+warn_unused_ignores = true
+show_error_codes = true
+pretty = true
+mypy_path = "src"
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
+
+pythonpath = [
+    "src",
+]
+
+addopts = [
+    "--cov=market_regime_intelligence",
+    "--cov-report=term-missing",
+]
+
+[tool.coverage.run]
+source = [
+    "src/market_regime_intelligence",
+]
+
+branch = true
+
+[tool.hatch.version]
+path = "src/market_regime_intelligence/__init__.py"
