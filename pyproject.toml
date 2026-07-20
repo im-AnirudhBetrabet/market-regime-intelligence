@@ -41,6 +41,7 @@ dependencies = [
     "structlog>=25.4.0",
     "typer>=0.16.0",
     "rich>=14.1.0",
+    "yfinance>=1.5.1",
 ]
 
 [dependency-groups]
