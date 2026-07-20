@@ -1,0 +1,14 @@
+app:
+  environment: dev
+  timezone   : Asia/Kolkata
+
+market:
+  symbol: "^NSEI"
+
+data:
+  timeframe    : "5m"
+  history_years: 10
+
+logging:
+  level  : INFO
+  console: true
