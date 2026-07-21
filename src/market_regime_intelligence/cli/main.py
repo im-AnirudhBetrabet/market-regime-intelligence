@@ -5,9 +5,9 @@ from market_regime_intelligence.cli.ingest       import ingest_app
 from market_regime_intelligence.cli.predict      import predict_app
 from market_regime_intelligence.cli.train        import train_app
 from market_regime_intelligence.cli.validate     import validate_app
+from market_regime_intelligence.cli.clean        import clean_app
 from market_regime_intelligence.config           import get_settings
 from market_regime_intelligence.logging          import configure_logging
-
 import typer
 
 settings = get_settings()
@@ -24,7 +24,7 @@ app.add_typer(validate_app    , name="validate"    )
 app.add_typer(characterize_app, name="characterize")
 app.add_typer(train_app       , name="train"       )
 app.add_typer(predict_app     , name="predict"     )
-
+app.add_typer(clean_app       , name="clean"       )
 @app.command()
 def version() -> None:
     """
