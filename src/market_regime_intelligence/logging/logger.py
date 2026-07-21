@@ -14,7 +14,10 @@ def configure_logging(level: str = "INFO") -> None:
         level:
             Logging level
     """
-
+    logging.getLogger("yfinance").setLevel(logging.CRITICAL)
+    logging.getLogger("urllib3").setLevel(logging.CRITICAL)
+    logging.getLogger("requests").setLevel(logging.CRITICAL)
+    logging.getLogger("peewee").setLevel(logging.CRITICAL)
     logging.basicConfig(
         level=getattr(logging, level.upper()),
         format=(

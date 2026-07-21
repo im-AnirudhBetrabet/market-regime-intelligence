@@ -34,7 +34,7 @@ class DatasetValidator:
 
         if (dataframe["high"] < dataframe["low"]).any():
             errors.append("Found rows where high < low.")
-
+        print(dataframe[dataframe["high"] < dataframe["low"]])
         return ValidationResult(
             passed=len(errors) == 0,
             errors=errors,

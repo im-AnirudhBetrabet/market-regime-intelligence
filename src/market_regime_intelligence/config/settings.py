@@ -3,9 +3,7 @@ Typed application settings.
 """
 
 from __future__ import annotations
-
-from email.policy import default
-
+from datetime   import date
 from pydantic   import BaseModel, ConfigDict, Field
 
 class AppConfig(BaseModel):
@@ -30,8 +28,10 @@ class DataConfig(BaseModel):
     """
     model_config = ConfigDict(frozen=True)
 
-    history_years: int = Field(default=10, ge=1)
-    timeframe    : str = Field(default="5m")
+    history_years: int  = Field(default=10, ge=1)
+    timeframe    : str  = Field(default="5m")
+    start_date   : date = date(2011, 1, 1)
+    end_date     : date = date(2026, 3, 31)
 
 class LoggingConfig(BaseModel):
     """
@@ -47,7 +47,9 @@ class AppSettings(BaseModel):
     """
     model_config = ConfigDict(frozen=True, extra="forbid")
 
-    app    : AppConfig
-    data   : DataConfig
-    logging: LoggingConfig
-    market : MarketConfig
+    app    : AppConfig     = Field(default_factory=AppConfig)
+    data   : DataConfig    = Field(default_factory=DataConfig)
+    logging: LoggingConfig = Field(default_factory=LoggingConfig)
+    market : MarketConfig  = Field(default_factory=MarketConfig)
+
+settings = AppSettings()

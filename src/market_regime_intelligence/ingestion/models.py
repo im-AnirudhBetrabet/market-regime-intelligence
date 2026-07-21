@@ -1,6 +1,7 @@
 from __future__  import annotations
 from dataclasses import dataclass
 from datetime    import date
+from pathlib     import Path
 
 @dataclass(frozen=True)
 class DownloadRequest:
@@ -13,4 +14,4 @@ class DownloadRequest:
 class DownloadResult:
     symbol     : str
     rows       : int
-    output_path: str
+    output_path: Path
