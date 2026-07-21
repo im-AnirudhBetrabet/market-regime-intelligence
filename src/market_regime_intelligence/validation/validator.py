@@ -1,9 +1,5 @@
 from __future__ import annotations
-
-import pandas
 import pandas as pd
-from mypyc.irbuild.util import dataclass_decorator_type
-
 from market_regime_intelligence.validation.models import ValidationResult
 from market_regime_intelligence.validation.rules  import REQUIRED_COLUMNS
 
@@ -34,7 +30,7 @@ class DatasetValidator:
 
         if (dataframe["high"] < dataframe["low"]).any():
             errors.append("Found rows where high < low.")
-        print(dataframe[dataframe["high"] < dataframe["low"]])
+
         return ValidationResult(
             passed=len(errors) == 0,
             errors=errors,

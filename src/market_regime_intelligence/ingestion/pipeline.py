@@ -2,7 +2,6 @@
 Data ingestion pipeline
 """
 from __future__                                      import annotations
-from datetime                                        import date
 from market_regime_intelligence.ingestion.models     import DownloadResult, DownloadRequest
 from market_regime_intelligence.validation.validator import DatasetValidator
 from market_regime_intelligence.common.file_reader   import CSVReader

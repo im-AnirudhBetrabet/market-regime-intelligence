@@ -32,14 +32,14 @@ datasets = DatasetRegistry(
             name="midcap100",
             symbol="NIFTY_MIDCAP_100.NS",
             description="NIFTY Midcap 100",
-            provider="nse",
+            provider="yahoo",
         ),
         Dataset(
             category=DatasetCategory.INDICES,
             name="smallcap100",
             symbol="^CNXSC",
             description="NIFTY Smallcap 100",
-            provider="nse",
+            provider="yahoo",
         ),
 
         # ==========================================================
